@@ -8,8 +8,7 @@ config :socketr, SocketrWeb.Endpoint,
   server: false
 
 # In test we don't send emails.
-config :socketr, Socketr.Mailer,
-  adapter: Swoosh.Adapters.Test
+config :socketr, Socketr.Mailer, adapter: Swoosh.Adapters.Test
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false

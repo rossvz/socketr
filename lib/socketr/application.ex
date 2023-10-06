@@ -7,6 +7,8 @@ defmodule Socketr.Application do
 
   @impl true
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies) || []
+
     children = [
       # Start the Telemetry supervisor
       SocketrWeb.Telemetry,
@@ -16,7 +18,8 @@ defmodule Socketr.Application do
       {Finch, name: Socketr.Finch},
       # Start the Endpoint (http/https)
       SocketrWeb.Endpoint,
-      SocketrWeb.Presence
+      SocketrWeb.Presence,
+      {Cluster.Supervisor, [topologies, [name: Socketr.ClusterSupervisor]]}
       # Start a worker by calling: Socketr.Worker.start_link(arg)
       # {Socketr.Worker, arg}
     ]
