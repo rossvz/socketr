@@ -23,6 +23,14 @@ defmodule SocketrWeb.RoomChannel do
     {:noreply, socket}
   end
 
+  def handle_in("canvas_change", %{"canvas" => canvas}, socket) do
+    broadcast(socket, "canvas_change", %{
+      canvas: canvas
+    })
+
+    {:noreply, socket}
+  end
+
   def handle_info(:after_join, socket) do
     {:ok, _} =
       Presence.track(socket, socket.assigns.user_id, %{

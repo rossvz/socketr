@@ -43,6 +43,7 @@ defmodule SocketrWeb.UserSocket do
     ]
 
     profile_pic = Stream.cycle(possible_imgs) |> Enum.at(String.to_integer(id))
+    IO.inspect(binding(), label: "user_socket.ex:47")
     {:ok, assign(socket, user_id: id, profile_pic: profile_pic)}
   end
 

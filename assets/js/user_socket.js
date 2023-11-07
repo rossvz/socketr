@@ -42,9 +42,8 @@ document.addEventListener("mousemove", (event) => {
 channel.on("new_msg", (payload) => {
   let messageItem = document.createElement("p");
   const d = new Date();
-  messageItem.innerText = `[${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}] ${
-    payload.user_id
-  }: ${payload.body}`;
+  messageItem.innerText = `[${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}] ${payload.user_id
+    }: ${payload.body}`;
   messagesContainer.appendChild(messageItem);
 });
 
